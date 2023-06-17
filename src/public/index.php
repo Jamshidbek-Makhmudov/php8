@@ -2,12 +2,15 @@
 
 //use App\Notification\Email;
 //use App\Enums\Status;
+use App\DB;
 use App\PaymentGeteway\Paddle\Transaction;
 require  __DIR__.'/../vendor/autoload.php';
 
 
 $transaction = new Transaction (25, "Transaction");
 var_dump($transaction::$count);
+$db = DB::getInstance([]);
+$db1 = DB::getInstance([]);
 
 //$email=new Email();
 //var_dump($email);

@@ -8,9 +8,10 @@ require  __DIR__.'/../vendor/autoload.php';
 
 
 $transaction = new Transaction (25, "Transaction");
-var_dump($transaction::$count);
-$db = DB::getInstance([]);
-$db1 = DB::getInstance([]);
+
+
+$transaction->process();
+
 
 //$email=new Email();
 //var_dump($email);
@@ -60,3 +61,14 @@ $db1 = DB::getInstance([]);
 
 */
 
+
+
+
+/* grammer: opp->
+encapsulations: oopda public private va protecteed methodlari bor. public ishlatsak unga tashqarida xoxlaganimizcha access boladi va bemalol ozgartirsak boladi.
+lekin private qilsak uni ozgartira olmaymiz lekin shunda ham preivate bergan clasimizni ichida public function bolsa biz shu public function orqali
+private variableni ozgartirsak boladi
+Abstraction
+Polymorphism
+Inheritance
+*/

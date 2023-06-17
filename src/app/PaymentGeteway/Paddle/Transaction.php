@@ -1,25 +1,19 @@
 <?php
 declare(strict_types=1);
 namespace App\PaymentGeteway\Paddle;
-//use App\Enums\Status;
+
 class Transaction
 {
 
-//    private string $status;
-
-public static int $count=0;
-
-    public function __construct(
-        public float $amout,
-        public string $description
-    )
+public float $amount;
+    public function __construct(float $amount)
     {
-//        $this->setStatus(Status::PENDING);
+       $this-> amount=$amount;
     }
 
     public function process()
     {
-        echo "Processing paddle transaction ";
+        echo "Processing paddle transaction " . $this-> amount . " transaction";
 
     }
 

@@ -1,11 +1,6 @@
 <?php
 declare(strict_types=1);
 namespace App\Classes;
-
-
-
-use App\View;
-
 class Home
 {
     public function index():string
@@ -24,7 +19,32 @@ class Home
 
       //  $_SESSION['count']=($_SESSION['count'] ?? 0)+1;
        // return View::make('index',$_GET)->render();
-        return " home";
+
+
+        //file uploads
+        return <<<FORM
+<form method="post"
+ enctype="multipart/form-data" 
+ action="/upload"> 
+ <input name="receipt" type="file">
+ <input name="myimage" type="file">
+ <button type="submit">upload</button>
+ </form>>
+FORM;
+    }
+    public function upload()
+    {
+        echo "<pre>";
+        var_dump($_FILES);
+
+        $filePath=STORAGE_PATH . '/' . $_FILES['receipt']['name'];
+
+        move_uploaded_file($_FILES['receipt']['tmp_name'],$filePath);
+        echo "<pre>";
+        var_dump(pathinfo($filePath));
+        echo "<pre>";
+
+
 
     }
 

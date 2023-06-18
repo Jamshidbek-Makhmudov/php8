@@ -13,6 +13,22 @@ $transaction = new Transaction (25, "Transaction");
 $transaction->process();
 
 
+//access to private properties and methods:
+$reflectionProperty= new ReflectionProperty(Transaction::class, 'amount');
+$reflectionProperty->setAccessible(true);
+$reflectionProperty->setAccessible($transaction, 125);
+var_dump( $reflectionProperty->getValue($transaction));
+
+//
+$transaction->copyFrom(new Transaction(100));
+echo "<hr>";
+$toaster=new Toaster();
+$toaster->addSlice("bread");
+$toaster->toast();
+
+
+echo "<hr>" . "iterators" . "<hr>";
+
 //$email=new Email();
 //var_dump($email);
 //$transaction=new Transaction();

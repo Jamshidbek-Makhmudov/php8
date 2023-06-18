@@ -5,26 +5,40 @@ namespace App\PaymentGeteway\Paddle;
 class Transaction
 {
 
-public float $amount;
+private  float $amount;
     public function __construct(float $amount)
     {
        $this-> amount=$amount;
     }
 
-    public function process()
+    //classni ichida objectga teng bolgan methodni shu yerni ozida chaqirsa boladi:
+    public function copyFrom(Transaction $transaction)
+
     {
-        echo "Processing paddle transaction " . $this-> amount . " transaction";
+        var_dump($transaction->amount, $transaction->sendEmail());
 
     }
 
-//    public function setStatus(string $status):self
-//    {
-//        if(!isset(Status::ALL_STATUSES[$status])){
-//            throw new \InvalidArgumentException('Invalid status');
-//        }
-//        $this-> status=$status;
-//        return $this;
-//    }
+    public function process()
+    {
+        echo "Processing paddle transaction " . $this-> amount . " transaction";
+        
+        $this->generateReceipt();
+        $this->sendEmail();
+
+    }
+
+
+
+    private function generateReceipt()
+    {
+
+    }
+
+    private function sendEmail()
+    {
+        return true;
+    }
 
 }
 

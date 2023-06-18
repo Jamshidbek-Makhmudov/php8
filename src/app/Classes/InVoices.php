@@ -7,6 +7,18 @@ class InVoices
     public function index():string
 
     {
+
+        unset($_SESSION['count']);
+
+        setcookie(
+            'userName', //name of cookie
+            'James',    //value of cookie bunda keyingi larni [] arrayni ichiga yozsa hma boladi
+            time()-24*60*60 //when expires
+        # '/',      //path cokkie will be valid
+        # '',  // doiamn availabe cookie
+        # false, //secure parametr
+        #false //httply only cant not be access by clientside
+        );
         return "Index";
 
     }

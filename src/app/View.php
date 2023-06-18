@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace src\app;
+namespace App;
 
 use src\app\Exceptions\ViewNotFoundException;
 use const App\VIEW_PATH;
@@ -39,13 +39,13 @@ class View
         return (string) ob_get_clean();
     }
 
-    public function __toString(): string
-    {
-        return $this->render();
-    }
-
-    public function __get(string $name)
-    {
-        return $this->params[$name] ?? null;
-    }
+//    public function __toString(): string
+//    {
+//        return $this->render();
+//    }
+//
+//    public function __get(string $name)
+//    {
+//        return $this->params[$name] ?? null;
+//    }
 }

@@ -1,67 +1,21 @@
 <?php
-
-//use App\Notification\Email;
-//use App\Enums\Status;
-use App\DB;
-use App\PaymentGeteway\Paddle\Transaction;
 require  __DIR__.'/../vendor/autoload.php';
 
+$router=new App\Router();
 
-$transaction = new Transaction (25, "Transaction");
-
-
-$transaction->process();
-
-
-//access to private properties and methods:
-$reflectionProperty= new ReflectionProperty(Transaction::class, 'amount');
-$reflectionProperty->setAccessible(true);
-$reflectionProperty->setAccessible($transaction, 125);
-var_dump( $reflectionProperty->getValue($transaction));
-
-//
-$transaction->copyFrom(new Transaction(100));
-echo "<hr>";
-$toaster=new Toaster();
-$toaster->addSlice("bread");
-$toaster->toast();
+$router
+    -> get('/', [App\Classes\Home::class, "index"])
+    -> get('/invoices', [App\Classes\InVoices::class, "index"])
+    -> get('/invoices/create', [App\Classes\InVoices::class, "create"])
+    -> post('/invoices/create', [App\Classes\InVoices::class, "store"]);
 
 
-echo "<hr>" . "iterators" . "<hr>";
-
-//$email=new Email();
-//var_dump($email);
-//$transaction=new Transaction();
-//$transaction-> setStatus(Status::PAID);
-//var_dump($transaction);
+echo $router->resolve($_SERVER['REQUEST_URI'], strtoLower($_SERVER['REQUEST_METHOD']));
 
 
 
 
 
-
-#declare(strict_types = 1);
-
-#echo "<pre>";
-#print_r($_SERVER);
-#echo "<pre>";
-
-#$router=new App\Router();
-//$router-> register(
-//    '/',
-//    function(){
-//        echo "Home";
-//    }
-//
-//);
-//$router-> register(
-//    '/invoices',
-//    function(){
-//        echo "Invoices";
-//    }
-//
-//);
-//echo $router->resolve($_SERVER['REQUEST_URI']);
 
 
 /* super globals:

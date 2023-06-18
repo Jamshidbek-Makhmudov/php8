@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace src\app\Exceptions;
+namespace App\Exceptions;
 
 class RouteNotFoundException extends \Exception
 {
